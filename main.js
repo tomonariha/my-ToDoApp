@@ -1,4 +1,4 @@
-var STORAGE_KEY = 'todos-vuejs-demo'
+var STORAGE_KEY = 'My-todo-app'
 var todoStorage = {
   fetch: function() {
     var todos = JSON.parse(
@@ -38,11 +38,11 @@ var vm = new Vue({
       content.value = ''
     },
     editTodo: function(todo) {
-      let newTitle = window.prompt(`Update content`, `${todo.content}`)
-      if ((newTitle === '')||(newTitle === null)) {
+      let newContent = window.prompt(`Update content`, `${todo.content}`)
+      if ((newContent === '')||(newContent === null)) {
         return
       } else {
-        todo.content = newTitle
+        todo.content = newContent
       }
       todoStorage.save(this.todos)
     },
