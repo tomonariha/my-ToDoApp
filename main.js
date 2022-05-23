@@ -1,7 +1,7 @@
-var STORAGE_KEY = 'My-todo-app'
-var todoStorage = {
+const STORAGE_KEY = 'My-todo-app'
+const todoStorage = {
   fetch: function() {
-    var todos = JSON.parse(
+    const todos = JSON.parse(
       localStorage.getItem(STORAGE_KEY) || '[]'
     )
     todos.forEach(function(todo, index) {
@@ -14,7 +14,7 @@ var todoStorage = {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }
 }
-var vm = new Vue({
+const vm = new Vue({
   el: '#app',
   data: {
     content: '',
@@ -25,17 +25,17 @@ var vm = new Vue({
   },
   methods: {
     addTodo: function() {
-      var content = this.$refs.content
-      if ((content.value === '')||(content.value === null)) {
+      const content = this.content
+      if ((content === '')||(content === null)) {
         return
       }
       this.todos.push({
         id: todoStorage.uid++,
-        content: content.value,
+        content: content,
         isCompleted: false
       })
       todoStorage.save(this.todos)
-      content.value = ''
+      this.content = ''
     },
     editTodo: function(todo) {
       let newContent = window.prompt(`Update content`, `${todo.content}`)
@@ -47,7 +47,7 @@ var vm = new Vue({
       todoStorage.save(this.todos)
     },
     deleteTodo: function(todo) {
-      var index = this.todos.indexOf(todo)
+      const index = this.todos.indexOf(todo)
       this.todos.splice(index, 1)
       todoStorage.save(this.todos)
     },

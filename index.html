@@ -29,7 +29,7 @@
       </tbody>
     </table>
     <form class="add-form" v-on:submit="addTodo">
-      <input type="text" ref="content">
+      <input type="text" v-model="content">
       <button type="submit">Add</button>
     </form>
   </div>
